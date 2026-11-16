@@ -1,5 +1,5 @@
 // Зоряний рік — офлайн-кеш. Міняй VERSION при кожному оновленні файлів.
-var VERSION = 'zr-v2';
+var VERSION = 'zr-v3';
 var FILES = ['./', 'index.html', 'style.css', 'data.js', 'app.js', 'manifest.json', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));

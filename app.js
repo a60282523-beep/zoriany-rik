@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 var D = window.ZR_DATA;
-var KEY = 'zr2027';
+var KEY = window.ZR_DEMO ? 'zr2027demo' : 'zr2027';
 var qs = new URLSearchParams(location.search);
 var API = qs.get('api') || window.ZR_API || 'https://hometechua.com.ua/zr-api';
 var PTS = { calm: 10, money: 15, conf: 20 };
@@ -16,6 +16,7 @@ function blank() {
 }
 var S;
 try { S = JSON.parse(localStorage.getItem(KEY)) || blank(); } catch (e) { S = blank(); }
+if (!window.ZR_DEMO && S.act && !/^ZR-/.test(S.act.code || '')) { S.act = null; }
 var syncTimer = null;
 function save(noSync) {
   S.updated = Date.now();
